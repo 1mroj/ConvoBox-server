@@ -1,0 +1,44 @@
+Invoke-RestMethod -Uri "http://localhost:5000/templates/create" -Method Post -Headers @{
+    "Content-Type" = "application/json"
+} -Body '{
+    "wabaid": "275986335588625",
+    "accessToken": "EAAPbr2pJ7WUBOyZB5HzGJNaG73CioBK3sHHLQpXJtBfZC7UzwZAgBpABAIBZBREaQLSExuIacPfsIuo1ZBqxfTTAqJTHKqPcZCJlYh2mF0tdHY8PvnzhWMEKxgxyZAywEbT8c9wKsUI8gNcnVtKuPHCmmCvaCVaA74p3ZAPKjxkbM9STc150FO6CXLoXCsJjkAPH",
+    "headerFormat": "VIDEO",
+    "mediaPath": "D:/ConvoBox/server/Test/vid.mp4",
+    "bodyText": "Click the button below to shop now and use code {{1}} for {{2}} off!",
+    "bodyTextVariable": ["NEW50", "50%"],
+    "footerText": "Thank you for choosing our store",
+    "name": "editing", 
+    "language": "en",
+    "category": "MARKETING",
+    "allowCategoryChange": true,
+    "btntype1": "QUICK_REPLY",
+    "quicktext1": "Unsubscribe from all",
+    "btntype2": "QUICK_REPLY",
+    "quicktext2": "Send more offers",
+    "btntype3": "QUICK_REPLY",
+    "quicktext3": "amazon wishes",
+    "btntype4": "COPY_CODE",
+    "copyCodeVariable": "AMZ90"
+}'
+
+EDIT:
+
+Invoke-RestMethod -Uri "http://localhost:5000/templates/edit" -Method Post -Headers @{
+    "Content-Type" = "application/json"
+} -Body '{
+    "templateId": "457499750562273",
+    "accessToken": "EAAPbr2pJ7WUBOyZB5HzGJNaG73CioBK3sHHLQpXJtBfZC7UzwZAgBpABAIBZBREaQLSExuIacPfsIuo1ZBqxfTTAqJTHKqPcZCJlYh2mF0tdHY8PvnzhWMEKxgxyZAywEbT8c9wKsUI8gNcnVtKuPHCmmCvaCVaA74p3ZAPKjxkbM9STc150FO6CXLoXCsJjkAPH",
+    "headerFormat": "IMAGE",
+    "mediaPath": "D:/ConvoBox/server/Test/testimg.jpg",
+    "bodyText": "Click the button below to shop now and use code {{1}} for {{2}} off!",
+    "bodyTextVariable": ["DIWALI", "76%"],
+    "footerText": "Thank you for choosing our store", 
+    "language": "en",
+    "category": "MARKETING",
+    "quicktext1": "Unsubscribe from all",
+    "quicktext2": "Send more offers",
+    "urltext": "Visit Website",
+    "urllink": "http://example.com"
+}'
+

@@ -1,0 +1,89 @@
+Create Template(eng):
+Invoke-RestMethod -Uri "http://localhost:5000/templates/create" -Method Post -Headers @{
+    "Content-Type" = "application/json"
+} -Body '{
+    "wabaid": "290104034191813",
+    "accessToken": "EAAZAmyZAWJwT8BO54MGeuZAa7l21JoqA2auPfxcJiewuxmxAo9sFxZCn1BfD0sBV7v0A4QjYUuvOeRmZBHU68pbFwdDHgKJiKhxyiI8Y8xy2wuSpEEWlIWTw3mK3lEOCNNZBoBo6XvYaeswyQSts8zEPLXVqtheoFejgdPDLOq99D4nf3jZAKlUiroLtAksNmZAateFZAZARgZCBTOoFqOVBbiwH15Ab4dWe1ouAxwZD",
+    "headerFormat": "TEXT"
+    "headerText": "{{1}} our store!",
+    "headerTextVariable": "Visit",
+    "bodyText": "Click the button below to shop now and use code {{1}} for {{2}} off!",
+    "bodyTextVariable": ["NEW50", "50%"],
+    "footerText": "Thank you for choosing our store",
+    "name": "new_text_temp", 
+    "language": "en",
+    "category": "MARKETING",
+    "allowCategoryChange": false,
+    "btntype1": "QUICK_REPLY",
+    "quicktext1": "Unsubscribe from all",
+    "btntype2": "QUICK_REPLY",
+    "quicktext2": "Send more offers",
+    "btntype3": "QUICK_REPLY",
+    "quicktext3": "amazon wishes",
+    "btntype4": "COPY_CODE",
+    "copyCodeVariable": "AMAZON30"
+}'
+
+
+Tamil(not tested):
+Invoke-RestMethod -Uri "http://localhost:5000/templates/create" -Method Post -Headers @{
+    "Content-Type" = "application/json"
+} -Body '{
+    "wabaid": "290104034191813",
+    "accessToken": "EAAZAmyZAWJwT8BO4ELRvxgKl7bqctZBUol9NIUXgrukI9U3ADKUrhFZAgJcsxilvp5NqlZBZAyNw3mFIVRaURlkv0ydSx3fFHY3kQyHZCmXZCBS8ERkECGf04j0ZAli8xJMZCuWs9EZAtAcmXtd5pxAKn0McSfZAetAPrKK7QberkCb8BDze82BAtnZBjb583doVQ7xKTmOoKS12ibn3ClgwgMfR202uZCT6W6ZC6XOfpcZD",
+    "headerText": "{{1}} உங்களை அன்புடன் வரவேற்கிறோம்!",
+    "headerTextVariable": "எங்கள் செயலிக்கு",
+    "bodyText": "இப்போது ஷாப்பிங் செய்ய கீழே உள்ள பொத்தானைக் கிளிக் செய்து, {{1}} தள்ளுபடிக்கு {{2}} குறியீட்டைப் பயன்படுத்தவும்!",
+    "bodyTextVariable": ["50%","NEW50"],
+    "footerText": "எங்கள் கடையைத் தேர்ந்தெடுத்ததற்கு நன்றி!",
+    "name": "store_tam", 
+    "language": "ta",
+    "category": "MARKETING",
+    "allowCategoryChange": false,
+    "btntype1": "QUICK_REPLY",
+    "quicktext1": "எல்லாவற்றிலிருந்தும் என்னை குழுவிலக்கு",
+    "btntype2": "QUICK_REPLY",
+    "quicktext2": "மேலும் சலுகைகளை அனுப்பவும்",
+    "btntype3": "QUICK_REPLY",
+    "quicktext3": "வாழ்த்துக்கள்",
+    "btntype4": "COPY_CODE",
+    "copyCodeVariable": "OLD20",
+    "btntype5": "URL",
+    "urltext": "இப்பொழுது வாங்கு",
+    "urllink": "https://www.amazon.in"
+}'
+
+
+Get Template:
+Invoke-RestMethod -Uri "http://localhost:5000/templates/fetch?wabaid=275986335588625&accessToken=EAAPbr2pJ7WUBOyZB5HzGJNaG73CioBK3sHHLQpXJtBfZC7UzwZAgBpABAIBZBREaQLSExuIacPfsIuo1ZBqxfTTAqJTHKqPcZCJlYh2mF0tdHY8PvnzhWMEKxgxyZAywEbT8c9wKsUI8gNcnVtKuPHCmmCvaCVaA74p3ZAPKjxkbM9STc150FO6CXLoXCsJjkAPH" -Method Get
+
+DELETE template:
+$body = @{
+    wabaid = "275986335588625"
+    accessToken = "EAAPbr2pJ7WUBOyZB5HzGJNaG73CioBK3sHHLQpXJtBfZC7UzwZAgBpABAIBZBREaQLSExuIacPfsIuo1ZBqxfTTAqJTHKqPcZCJlYh2mF0tdHY8PvnzhWMEKxgxyZAywEbT8c9wKsUI8gNcnVtKuPHCmmCvaCVaA74p3ZAPKjxkbM9STc150FO6CXLoXCsJjkAPH"
+    templateId = "7001979276595011"
+    templateName = "market"
+}
+
+Invoke-RestMethod -Method DELETE -Uri 'http://localhost:5000/templates/delete' -Body ($body | ConvertTo-Json) -ContentType "application/json"
+
+
+EDIT Template:
+Invoke-RestMethod -Uri "http://localhost:5000/templates/edit" -Method Post -Headers @{
+    "Content-Type" = "application/json"
+} -Body '{
+    "templateId": "427791030186955",
+    "accessToken": "EAAZAmyZAWJwT8BO54MGeuZAa7l21JoqA2auPfxcJiewuxmxAo9sFxZCn1BfD0sBV7v0A4QjYUuvOeRmZBHU68pbFwdDHgKJiKhxyiI8Y8xy2wuSpEEWlIWTw3mK3lEOCNNZBoBo6XvYaeswyQSts8zEPLXVqtheoFejgdPDLOq99D4nf3jZAKlUiroLtAksNmZAateFZAZARgZCBTOoFqOVBbiwH15Ab4dWe1ouAxwZD",
+    "headerText": "{{1}} our store!",
+    "headerTextVariable": "Visit",
+    "bodyText": "Click the button below to shop now and use code {{1}} for {{2}} off!",
+    "bodyTextVariable": ["DIWALI", "76%"],
+    "footerText": "Thank you for choosing our store", 
+    "language": "en",
+    "category": "MARKETING",
+    "quicktext1": "Unsubscribe from all",
+    "quicktext2": "Send more offers",
+    "urltext": "Visit Website",
+    "urllink": "http://example.com"
+}'
+

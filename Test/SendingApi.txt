@@ -1,0 +1,40 @@
+
+  https://graph.facebook.com/v19.0/268715066317890/messages `
+  -H 'Authorization: Bearer EAAPbr2pJ7WUBO5JsgZADP2vSdCbcVD2b6kXcZBbCU5USoVbJOlmWcfb0Jes5cuySXZBkksYmYYsiOQHVZBjbRA727WVBlgZBDuI4vSk8bSseIxqVZCvh5wVbfsSFW1RslilPpK9I0vAHLlAAQ28KtNpi9xFaYxEzrbKByNd9lDpfEcYcYUS4jm9ljQKvMFUQiQVkU8dOmskzYZC9hBFEB4ZD' `
+  -H 'Content-Type: application/json' `
+  -d '{ \"messaging_product\": \"whatsapp\", \"to\": \"917339213046\", \"type\": \"template\", \"template\": { \"name\": \"hello_world\", \"language\": { \"code\": \"en_US\" } } }'
+
+
+
+
+
+
+  {
+  "field": "messages",
+  "value": {
+    "messaging_product": "whatsapp",
+    "metadata": {
+      "display_phone_number": "16505551111",
+      "phone_number_id": "123456123"
+    },
+    "contacts": [
+      {
+        "profile": {
+          "name": "test user name"
+        },
+        "wa_id": "16315551181"
+      }
+    ],
+    "messages": [
+      {
+        "from": "16315551181",
+        "id": "ABGGFlA5Fpa",
+        "timestamp": "1504902988",
+        "type": "text",
+        "text": {
+          "body": "this is a text message"
+        }
+      }
+    ]
+  }
+}

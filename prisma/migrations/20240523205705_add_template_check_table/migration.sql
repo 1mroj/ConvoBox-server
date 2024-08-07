@@ -1,0 +1,9 @@
+-- AlterTable
+ALTER TABLE "templateCheck" ALTER COLUMN "category" DROP NOT NULL,
+ALTER COLUMN "components" DROP NOT NULL,
+ALTER COLUMN "language" DROP NOT NULL,
+ALTER COLUMN "name" DROP NOT NULL,
+ALTER COLUMN "previous_category" DROP NOT NULL,
+ALTER COLUMN "quality_score" DROP NOT NULL,
+ALTER COLUMN "rejected_reason" DROP NOT NULL,
+ALTER COLUMN "status" DROP NOT NULL;

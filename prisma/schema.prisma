@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model messages {
+  messageId    String   @id
+  senderId     String
+  message      String
+  timestamp    String
+  messageType  String
+  messageEvent String
+  conversationId String? // Change this line
+  conversation conversations? @relation(fields: [conversationId], references: [conversationId]) // Add this line
+  createdAt    DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model whatsappBuisness {
+  id              String   @id
+  accessToken     String?
+  status          String
+  phoneNumber     String
+  phoneNumberId   String
+  verifiedName    String
+  createdAt       DateTime @default(now())
+  updateAt        DateTime @updatedAt
+  userId  String?
+  user   Users? @relation(fields: [userId] ,references: [user_id])
+}
+
+model Users {
+  user_id         String   @id
+  businessName    String
+  businessWebsite String   @unique
+  name            String
+  email           String   @unique
+  phone           String
+  password        String
+  otp             String?  @default("")
+  otpverified     String?  @default("no")
+  accessToken     String?  @default("") 
+  userType        String?  @default("admin") 
+  createdBy       String?  @default("")
+  createdAt       DateTime @default(now())
+  updateAt        DateTime @updatedAt
+  lastLoginAt     DateTime?
+  buisnessId    whatsappBuisness[] 
+}
+model conversations {
+  conversationId String @id @default(uuid())
+  buisnessNumber String
+  PhoneNumber String
+  conversationName String
+  messages messages[] // add this line
+}
+
+
+
+
+
+model  triggers {
+  triggerid String @id @default(uuid())
+  triggerword String
+  replayType String 
+  replay String
+  phonenumberid String 
+}
+
+model templates {
+  template_id     String   @id
+  wabaid          String
+  category        String?
+  status          String
+  name            String
+  language        String?
+  header          Json?
+  headerVariable  Json?
+  header_handle   String? @db.Char(500)
+   header_format   String?
+   components     Json?
+  body            Json?
+  bodyVariable   Json?
+  footer          Json?
+  buttons         Json?
+  quality_score   String?
+  rejected_reason String?
+  createdAt       DateTime?
+  lastEdited      DateTime?
+}
