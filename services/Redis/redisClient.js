@@ -2,13 +2,28 @@ import { createClient } from "redis";
 
 let redisClient;
 
-function getRedisClient() {
+async function getRedisClient() {
   if (!redisClient) {
-    redisClient = createClient({url:process.env.redisUrl});
-    redisClient.on("error", (err) => console.error("Redis Client Error", err));
-    redisClient.connect().catch(console.error);
+    redisClient = createClient({
+      url: process.env.redisUrl,
+      socket: {
+        tls: true,
+        rejectUnauthorized: false, // Only use this option if your certificate is self-signed
+      },
+    });
+
+    redisClient.on("error", (err) => {
+      console.error("Redis Client Error:", err);
+    });
+
+    try {
+      await redisClient.connect();
+    } catch (err) {
+      console.error("Redis connection failed:", err);
+    }
   }
   return redisClient;
 }
+
 
 export default getRedisClient;
