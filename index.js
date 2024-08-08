@@ -32,7 +32,7 @@ const server = http.createServer(app);
 const socket = setupSocketIO(app);
 
 cron.schedule("* * * * * *", async () => {
-  console.log("Cron job is running");
+  console.log("Cron job is running...");
   // Additional logic
 });
 
